@@ -28,6 +28,7 @@ class Page:
         self.showSteps = showSteps
         self.saveDocstrum = saveDocstrum
         self.lines = []
+        #greyscaleImage = cv2.imread(path, cv2.CV_LOAD_IMAGE_GRAYSCALE) NACHO
         greyscaleImage = cv2.imread(path, cv2.CV_LOAD_IMAGE_GRAYSCALE)
         self.orientations = []
         self.dists = []
