@@ -129,7 +129,7 @@ class Page:
         self.words = self.characters.getWords()
         stopwatch.lap("got words & tuples")
         
-        print "Total ", len(self.words), " words are found."
+        print("Total ", len(self.words), " words are found.")
         #for idx, word in enumerate(self.words):
         #    print "[",idx,"] word:"
         #    for idx_char, character in enumerate(word.characters):
@@ -160,7 +160,7 @@ class Page:
         #self.display_textline(textlineImage)
         
         #self.display(self.paint_textline(self.image))
-        print "Done."
+        print("Done.")
 
     def most_common(L):
         # get an iterable of (item, iterable) pairs
@@ -203,14 +203,14 @@ class Page:
         n_copy = n.copy()
         n_copy[::-1].sort() # sort in reverse way
         THRESHOLD_DIST_WIDTH = 15
-        for i in xrange(num_bins):
+        for i in range(num_bins):
             _max_idx = numpy.where(n == n_copy[i])    # Find peak
             if len(_max_idx[0])>1:                    # If ties,
                 _max = _max_idx[0][int(len(_max_idx[0])/2)]  # get middle
             else:
                 _max = _max_idx[0][0]
             dist_peaks.append(int(_max+numpy.min(dist)))
-        print ("Distance peaks: %s" %dist_peaks)
+        print(("Distance peaks: %s" %dist_peaks))
         '''
         first_group_offset = -1
         second_group_offset = -1

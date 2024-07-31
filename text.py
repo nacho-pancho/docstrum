@@ -106,7 +106,7 @@ class CharacterSet:
             #if True:
                 characters.append(character)
 
-        print "Total ", len(characters), " characters are found."
+        print("Total ", len(characters), " characters are found.")
         return characters
 
     ''' getContours         '''
@@ -225,7 +225,7 @@ class CharacterSet:
             remove_counter = remove_counter+1
             result = self.NNTree.query(character.toArray(), k=k)  # we only want nearest neighbour, but the first result will be the point matching itself.
             nearestNeighbourDistance = result[0]
-            for i in xrange(1,k):
+            for i in range(1,k):
                 #print("[%s] nearestNeighbourDistance: %s"%(remove_counter,result[0]))
                 NNDistances.append(nearestNeighbourDistance[i])
         avgNNDistance = sum(NNDistances)/len(NNDistances)
@@ -277,39 +277,39 @@ class CharacterSet:
         num_bins = int((numpy.max(NNDistances)-numpy.min(NNDistances)+1)/10)
         n, bins, patches = plt.hist(NNDistances, num_bins, facecolor='orange', alpha=0.5)
         plt.show()
-        print("Total %d all NNs" %len(NNDistances))
-        print("average NN distance: ",avgNNDistance)
+        print(("Total %d all NNs" %len(NNDistances)))
+        print(("average NN distance: ",avgNNDistance))
         
         num_bins = int((numpy.max(NNHorizontalDistances)-numpy.min(NNHorizontalDistances)+1)/10)
         n, bins, patches = plt.hist(NNHorizontalDistances, num_bins, facecolor='orange', alpha=0.5)
         plt.show()
-        print("Total %d hor NNs" %len(NNHorizontalDistances))
+        print(("Total %d hor NNs" %len(NNHorizontalDistances)))
         dist_peaks = []
         n_copy = n.copy()
         n_copy[::-1].sort() # sort in reverse way
-        for i in xrange(num_bins):
+        for i in range(num_bins):
             _max_idx = numpy.where(n == n_copy[i])    # Find peak
-            for j in xrange(len(_max_idx[0])):
+            for j in range(len(_max_idx[0])):
                 dist_peaks.append(int(bins[_max_idx[0][j]]))
-        print ("Distance peaks: %s" %dist_peaks)
+        print(("Distance peaks: %s" %dist_peaks))
         avgHorizontalNNDistance = sum(NNHorizontalDistances)/(len(NNHorizontalDistances))
-        print("average NN horizontal distance: %.2f\n" %avgHorizontalNNDistance)
+        print(("average NN horizontal distance: %.2f\n" %avgHorizontalNNDistance))
             
         
         num_bins = int((numpy.max(NNVerticalDistances)-numpy.min(NNVerticalDistances)+1)/10)
         n, bins, patches = plt.hist(NNVerticalDistances, num_bins, facecolor='orange', alpha=0.5)
         plt.show()
-        print("Total %d ver NNs" %len(NNVerticalDistances))
+        print(("Total %d ver NNs" %len(NNVerticalDistances)))
         dist_peaks = []
         n_copy = n.copy()
         n_copy[::-1].sort() # sort in reverse way
-        for i in xrange(num_bins):
+        for i in range(num_bins):
             _max_idx = numpy.where(n == n_copy[i])    # Find peak
-            for j in xrange(len(_max_idx[0])):
+            for j in range(len(_max_idx[0])):
                 dist_peaks.append(int(bins[_max_idx[0][j]]))
-        print ("Distance peaks: %s" %dist_peaks)
+        print(("Distance peaks: %s" %dist_peaks))
         avgVerticalNNDistance = sum(NNVerticalDistances)/(len(NNVerticalDistances))
-        print("average NN vertical distance: %.2f\n" %avgVerticalNNDistance)
+        print(("average NN vertical distance: %.2f\n" %avgVerticalNNDistance))
         
         self.characters = sorted(self.characters, key=lambda character: (character.x))    
         for character in self.characters:
